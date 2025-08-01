@@ -23,7 +23,7 @@ router.post('/forgotPassword', async(req, res) =>{
         const expiresAt= new Date(Date.now() + 60*60*1000)
         await pool.query('insert into password_resets(user_id, token, expires_at) values ($1,$2,$3)' ,[user.id, token, expiresAt]);
 
-        const resetLink= `http://localhost:5173/resetLink/${token}`;
+        const resetLink= `https://prathaagarwal.github.io/Hostel/resetLink/${token}`;
 
         await transporter.sendMail({
             from: process.env.Email_user,
